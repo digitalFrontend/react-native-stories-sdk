@@ -5,7 +5,7 @@ color white
 drawable blue_rounded
 drawable ic_close_white
 id frameLayout1
-id hello
+id stories_list
 layout stories_layout
 string default_app_name
 string default_caller_appointment

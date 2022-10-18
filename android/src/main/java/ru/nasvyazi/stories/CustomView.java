@@ -2,6 +2,7 @@ package ru.nasvyazi.stories;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -9,18 +10,26 @@ import android.widget.RemoteViews;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.inappstory.sdk.AppearanceManager;
+import com.inappstory.sdk.exceptions.DataException;
+import com.inappstory.sdk.stories.ui.list.StoriesList;
 
 public class CustomView extends FrameLayout {
+
   public CustomView(@NonNull Context context) {
     super(context);
 
-    // set padding and background color
-    this.setPadding(16,16,16,16);
-    this.setBackgroundColor(Color.parseColor("#5FD3F3"));
+    StoriesList storiesList = new StoriesList(context);
+    storiesList.setFeed("");
 
-    // add default text view
-    TextView text = new TextView(context);
-    text.setText("Welcome to Android Fragments with React Native.");
-    this.addView(text);
+    this.addView(storiesList);
+
+    try {
+      storiesList.loadStories();
+    } catch (DataException e) {
+      e.printStackTrace();
+    }
   }
 }

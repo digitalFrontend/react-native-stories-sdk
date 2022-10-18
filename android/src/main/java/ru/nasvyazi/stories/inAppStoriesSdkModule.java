@@ -28,6 +28,9 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.inappstory.sdk.InAppStoryManager;
+import com.inappstory.sdk.exceptions.DataException;
+import com.inappstory.sdk.stories.ui.list.StoriesList;
 
 import java.io.IOException;
 import java.security.Key;
@@ -56,7 +59,7 @@ public class inAppStoriesSdkModule extends ReactContextBaseJavaModule {
 
    @Override
    public String getName() {
-     return "WidgetShareData";
+     return "StoriesModule";
    }
 
   class DataObject {
@@ -67,6 +70,30 @@ public class inAppStoriesSdkModule extends ReactContextBaseJavaModule {
     public double green;
     public double red;
   }
+
+ @ReactMethod
+  public void onCreate(String userId, String apiKey ) throws DataException {
+
+    try {
+      new InAppStoryManager.Builder()
+              .userId(userId)
+              .apiKey(apiKey)
+              //.testKey(getTestKey())
+              .context(reactContext)
+              .create();
+
+        Log.d( "HEL userId", userId );
+        Log.d( "HEL apiKey", apiKey );
+
+    } catch (DataException e) {
+      e.printStackTrace();
+      return;
+    }
+
+
+
+  }
+
   // @ReactMethod
   // public void setDataList(final String dataList, final Promise promise) {
 
