@@ -1,15 +1,21 @@
 "use strict";
 
-// import { NativeModules, Platform } from "react-native";
+import { NativeModules, Platform } from "react-native";
 
-// const { WidgetShareData: Widget } = NativeModules;
+const { StoriesModule: Stories } = NativeModules;
 
 // let params = null;
 
-// let WidgetData = {
-//   setDataList: async (dataList) => {},
-//   setParams: (params) => {},
-// };
+let StoriesManager = {
+  onCreate: async (userId, apiKey) => {
+    Stories.onCreate(userId, apiKey);
+  },
+  openSingle: async (storyId) => {
+    Stories.openSingleStory(storyId);
+  },
+};
+
+export default StoriesManager;
 
 // const formatData = (dataList) => {
 //   try {

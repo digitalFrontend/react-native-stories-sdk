@@ -28,6 +28,7 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.InAppStoryManager;
 import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
@@ -49,7 +50,7 @@ public class inAppStoriesSdkModule extends ReactContextBaseJavaModule {
   private final ReactApplicationContext reactContext;
   // private final String sharedPreferencesName = "TELEOPTI_storage";
 
-
+    AppearanceManager appearanceManager = new AppearanceManager();
   @SuppressLint("RestrictedApi")
   public inAppStoriesSdkModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -89,11 +90,15 @@ public class inAppStoriesSdkModule extends ReactContextBaseJavaModule {
       e.printStackTrace();
       return;
     }
-
-
-
   }
 
+    @ReactMethod
+    public void openSingleStory(String storyId) throws DataException {
+
+      if (storyId == null || storyId.isEmpty()) return;
+      InAppStoryManager.getInstance().showStory(storyId, reactContext, appearanceManager);
+
+    }
   // @ReactMethod
   // public void setDataList(final String dataList, final Promise promise) {
 
