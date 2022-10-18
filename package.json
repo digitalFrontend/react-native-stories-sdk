@@ -1,5 +1,5 @@
 {
-  "name": "react-native-sories-sdk",
+  "name": "react-native-stories-sdk",
   "version": "1.0.0",
   "description": "Module for detecting caller id by provided callers list",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "android",
     "index.js",
     "ios",
-    "react-native-sories-sdk.podspec"
+    "react-native-stories-sdk.podspec"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

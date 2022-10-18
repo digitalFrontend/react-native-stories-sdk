@@ -1,18 +1,17 @@
-ru/nasvyazi/widget/ReactBridgeTools.java
- ru.nasvyazi.widget.ReactBridgeTools
- ru.nasvyazi.widget.ReactBridgeTools$1
-ru/nasvyazi/widget/WidgetFactory.java
- ru.nasvyazi.widget.Data
- ru.nasvyazi.widget.DataObject
- ru.nasvyazi.widget.WidgetFactory
-ru/nasvyazi/widget/WidgetShareDataModule.java
- ru.nasvyazi.widget.WidgetShareDataModule
- ru.nasvyazi.widget.WidgetShareDataModule$DataObject
-ru/nasvyazi/widget/WidgetShareDataPackage.java
- ru.nasvyazi.widget.WidgetShareDataPackage
-ru/nasvyazi/widget/BuildConfig.java
- ru.nasvyazi.widget.BuildConfig
-ru/nasvyazi/widget/WidgetService.java
- ru.nasvyazi.widget.WidgetService
-ru/nasvyazi/widget/TeleoptiWidget.java
- ru.nasvyazi.widget.TeleoptiWidget
+ru/nasvyazi/stories/inAppStoriesSdkModule.java
+ ru.nasvyazi.stories.inAppStoriesSdkModule
+ ru.nasvyazi.stories.inAppStoriesSdkModule$DataObject
+ru/nasvyazi/stories/inAppStoriesSdkPackage.java
+ ru.nasvyazi.stories.inAppStoriesSdkPackage
+ru/nasvyazi/stories/CustomView.java
+ ru.nasvyazi.stories.CustomView
+ru/nasvyazi/stories/BuildConfig.java
+ ru.nasvyazi.stories.BuildConfig
+ru/nasvyazi/stories/ReactBridgeTools.java
+ ru.nasvyazi.stories.ReactBridgeTools
+ ru.nasvyazi.stories.ReactBridgeTools$1
+ru/nasvyazi/stories/MyViewManager.java
+ ru.nasvyazi.stories.MyViewManager
+ ru.nasvyazi.stories.MyViewManager$1
+ru/nasvyazi/stories/MyFragment.java
+ ru.nasvyazi.stories.MyFragment
