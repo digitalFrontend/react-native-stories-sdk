@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataImage.png" alt="Cover" title="React Native Detect CallerID" width="800">
+  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewImage.png" alt="Cover" title="React Native Detect CallerID" width="800">
 </p>
 
 React Native Detect CallerID implements [Broadcast Receiver](https://developer.android.com/guide/components/broadcasts) (Android) and [CallKit: Call Directory Extension](https://developer.apple.com/documentation/callkit/cxcalldirectoryextensioncontext) (iOS).
@@ -10,9 +10,9 @@ With this library you can simple add CallerID for your React-Native Apps. For iO
 
 <br/>
 <p align="center">
-    <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataiOSImage.PNG" alt="React Native Detect CallerID iOS" title="React Native Detect CallerID" height="600" >
-    <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataAndroidClosedImage.jpg" alt="React Native Detect CallerID Android 1" title="React Native Detect CallerID" height="600">
-    <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataAndroidOpenedImage.jpg" alt="React Native Detect CallerID Android 2" title="React Native Detect CallerID" height="600">
+    <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewiOSImage.PNG" alt="React Native Detect CallerID iOS" title="React Native Detect CallerID" height="600" >
+    <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewAndroidClosedImage.jpg" alt="React Native Detect CallerID Android 1" title="React Native Detect CallerID" height="600">
+    <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewAndroidOpenedImage.jpg" alt="React Native Detect CallerID Android 2" title="React Native Detect CallerID" height="600">
 </p>
 <br/>
 
@@ -41,30 +41,30 @@ npm install react-native-detect-caller-id --save
 Firsty, you should add `Call Directory Extension`.
 
 <p align="center">
-  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataImageTutorial1.png" alt="Cover" title="React Native Detect CallerID" width="200">
-  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataImageTutorial2.png" alt="Cover" title="React Native Detect CallerID" width="600">
-  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataImageTutorial3.png" alt="Cover" title="React Native Detect CallerID" width="800">
+  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewImageTutorial1.png" alt="Cover" title="React Native Detect CallerID" width="200">
+  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewImageTutorial2.png" alt="Cover" title="React Native Detect CallerID" width="600">
+  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewImageTutorial3.png" alt="Cover" title="React Native Detect CallerID" width="800">
 </p>
 
-It creates new folder in your main app. Open `WidgetShareDataHandler.swift` and delete all content. Then add content from `node_modules/react-native-detect-caller-id/ios/CallDirectoryExtension/WidgetShareDataHandler.swift`. Its replace default handler implementation to library implementation.
+It creates new folder in your main app. Open `NativeCustomViewHandler.swift` and delete all content. Then add content from `node_modules/react-native-detect-caller-id/ios/CallDirectoryExtension/NativeCustomViewHandler.swift`. Its replace default handler implementation to library implementation.
 
 <p align="center">
-  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataImageTutorial4.png" alt="Cover" title="React Native Detect CallerID" height="300">
+  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewImageTutorial4.png" alt="Cover" title="React Native Detect CallerID" height="300">
 </p>
 
 Secondly, you should use provisioning profile for your app with enabled AppGroup Capability, so add this Capability.
 
 <p align="center">
-  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataImageTutorial5.png" alt="Cover" title="React Native Detect CallerID" width="800">
+  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewImageTutorial5.png" alt="Cover" title="React Native Detect CallerID" width="800">
 </p>
 
 Thirdly, select your CallDirectoryExtension target and set provisioning profile for extension and add similar AppGroup (see previous point).
 
 <p align="center">
-  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeWidgetShareDataImageTutorial6.png" alt="Cover" title="React Native Detect CallerID" width="800">
+  <img src="https://yesskyscrapers.github.io/app4t2site/reactnativeNativeCustomViewImageTutorial6.png" alt="Cover" title="React Native Detect CallerID" width="800">
 </p>
 
-Lastly, IMPORTANT! check your `WidgetShareDataHandler.swift`. It should define similar DATA_GROUP constant with your AppGroup.
+Lastly, IMPORTANT! check your `NativeCustomViewHandler.swift`. It should define similar DATA_GROUP constant with your AppGroup.
 
 ### Android
 
@@ -220,14 +220,14 @@ console.log("requestServicePermission", permission);
 
 ## Set Params
 
-Before use methods you should to set your ios extension, appgroup and android encryption params by this method. IOS params should be similar with WidgetShareDataHandler.swift.
+Before use methods you should to set your ios extension, appgroup and android encryption params by this method. IOS params should be similar with NativeCustomViewHandler.swift.
 
 ```js
 CallerDetector.setParams({
   ios: {
     EXTENSION_ID: "packagename.CallDirectoryExtension", // Similar with your Extension name
     DATA_GROUP: "group.packagename", // Similar with your AppGroup
-    DATA_KEY: "callerListKey", // Similar with DATA_KEY from your WidgetShareDataHandler.swift file
+    DATA_KEY: "callerListKey", // Similar with DATA_KEY from your NativeCustomViewHandler.swift file
   },
   android: {
     dbPassword: "password", // any length password for all db encryption
