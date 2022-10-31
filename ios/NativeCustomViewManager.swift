@@ -14,7 +14,7 @@ class NativeCustomViewManager: RCTViewManager {
   }
 
   override func view() -> UIView! {
-    return NativeCustomView()
+      return SimpleIntegrationController().view
   }
 
 }

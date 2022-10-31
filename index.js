@@ -8,10 +8,20 @@ const { StoriesModule: Stories } = NativeModules;
 
 let StoriesManager = {
   onCreate: async (userId, apiKey) => {
-    Stories.onCreate(userId, apiKey);
+   if( Platform.OS == 'android'){
+      Stories.onCreate(userId, apiKey);
+   }else {
+      Stories.onCreate(apiKey);
+   }
+
   },
   openSingle: async (storyId) => {
-    Stories.openSingleStory(storyId);
+    if( Platform.OS == 'android'){
+      Stories.openSingleStory(storyId);
+    }else {
+      Stories.showSingle(storyId);
+    }
+    
   },
 };
 

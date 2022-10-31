@@ -16,5 +16,8 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
-  s.dependency "InAppStory"
+  s.ios.vendored_frameworks = [
+    'Frameworks/InAppStorySDK.xcframework'
+  ]
+
 end
