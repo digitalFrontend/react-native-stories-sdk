@@ -9,6 +9,11 @@ import InAppStorySDK
 
 class CustomStoryCell: UICollectionViewCell
 {
+//    required init(coder aDecoder: NSCoder) {
+//         super.init(coder: aDecoder)
+//         NSBundle.mainBundle().loadNibNamed("SomeView", owner: self, options: nil)
+//         self.addSubview(self.view);    // adding the top level view to the view hierarchy
+//      }
     // reuseIdentifier of cell
     static var reuseIdentifier: String {
         return String(describing: self)
@@ -16,7 +21,11 @@ class CustomStoryCell: UICollectionViewCell
     
     // nib of cell, if cell created in .xib file
     static var nib: UINib? {
+            // let bundle = Bundle(for: self.classForCoder())
         return UINib(nibName: String(describing: self), bundle: Bundle(for: self))
+        //UINib(nibName: "CustomStoryCell", bundle: bundle)
+        //bundle.loadNibNamed("CustomStoryCell", owner: nil, options: nil)?.first as? UINib
+         
     }
     
     var storyID: String!
@@ -25,14 +34,15 @@ class CustomStoryCell: UICollectionViewCell
     fileprivate let player = AVPlayer()
     fileprivate var playerLayer: AVPlayerLayer!
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var containerView: UIView!
-    
+       
     override func prepareForReuse() {
         super.prepareForReuse()
         
+
         imageView.image = nil
         titleLabel.text = ""
         videoView.isHidden = true
@@ -41,10 +51,21 @@ class CustomStoryCell: UICollectionViewCell
     // set start cell style
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+//            layer.borderColor =  UIColor.black.cgColor
+//            layer.borderWidth = 1.5
+//            layer.shadowOpacity = 1
+//
+//
+//        containerView.layer.masksToBounds = false
+
         containerView.layer.cornerRadius = 16
+        let blurEffectView = UIView()
+        blurEffectView.backgroundColor = .white
+        blurEffectView.frame = containerView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        containerView.addSubview(blurEffectView)
         
-        titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        titleLabel.font = UIFont(name: "Tele2TextSansSHORT-Bold", size: 10)!
         titleLabel.textColor = .black
         
         if playerLayer == nil {
@@ -112,7 +133,15 @@ extension CustomStoryCell: StoryCellProtocol
     
     // set new state if story is opened
     func setOpened(_ value: Bool) {
-        containerView.alpha = value ? 0.7 : 1.0
+        // containerView.sub backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        let whiteSubview = containerView.subviews.first{$0.backgroundColor == .white}//?.alpha = value ? 0.4 : 0
+        whiteSubview?.alpha = value ? 0.4 : 0
+//        let blurEffectView = UIView()
+//        blurEffectView.backgroundColor = .white
+//        blurEffectView.alpha = value ? 0.4 : 0
+//        blurEffectView.frame = containerView.bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        containerView.addSubview(blurEffectView)
     }
     
     // set new state if story cell if highlighted

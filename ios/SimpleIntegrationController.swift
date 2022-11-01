@@ -39,10 +39,11 @@ class SimpleIntegrationController: UIViewController, InAppStoryDelegate
 
            // setupInAppStory
             print("SimpleIntegrationController 3")
-        InAppStory.shared.cellFont = UIFont(name: "Tele2TextSansSHORT-Bold", size: 10)!
-        InAppStory.shared.cellBorderRadius = CGFloat(12.0)
-        InAppStory.shared.showCellTitle = false
-        InAppStory.shared.coverQuality = .high
+        
+//        InAppStory.shared.cellFont = UIFont(name: "Tele2TextSansSHORT-Bold", size: 10)!
+//        InAppStory.shared.cellBorderRadius = CGFloat(12.0)
+//        InAppStory.shared.showCellTitle = false
+//        InAppStory.shared.coverQuality = .high
 
             // setup InAppStorySDK for user with ID
         DispatchQueue.main.async {
@@ -50,6 +51,7 @@ class SimpleIntegrationController: UIViewController, InAppStoryDelegate
                                          return
                                     }
             rootVC.addChild(self)
+            
         }
        
 
@@ -61,14 +63,15 @@ class SimpleIntegrationController: UIViewController, InAppStoryDelegate
         
             storyView = StoryView(frame: rect, favorite: false)
             storyView.translatesAutoresizingMaskIntoConstraints = true
-            storyView.storyCell.backgroundColor = .none
+//            storyView.storyCell.contentView.addShadow(offset: .zero, color: UIColor.black, radius: 5.0, opacity: 1.0) //to add shadow
         
             // adding a point from where the reader will be shown
             storyView.target =  self
             storyView.storiesDelegate = self
         
+        
             // set delegate for layout of StoryView
-            storyView.deleagateFlowLayout = self
+      
    
             
 //            var allConstraints: [NSLayoutConstraint] = []
@@ -76,10 +79,26 @@ class SimpleIntegrationController: UIViewController, InAppStoryDelegate
 //            NSLayoutConstraint.activate(allConstraints)
             
             // running internal StoryView logic
-            
-            storyView.create()
+    
+            storyView.storyCell = CustomStoryCell()
+            storyView.deleagateFlowLayout = self
         
             self.view.addSubview(storyView)
+        
+//                var allConstraints: [NSLayoutConstraint] = []
+//                let horConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(16)-[storyView]-(16)-|",
+//                                                                   options: [.alignAllLeading, .alignAllTrailing],
+//                                                                   metrics: nil,
+//                                                                   views: ["storyView": storyView!])
+//                allConstraints += horConstraint
+//                let vertConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[storyView(150)]",
+//                                                                    options: [.alignAllTop, .alignAllBottom],
+//                                                                    metrics: nil,
+//                                                                    views: ["storyView": storyView!])
+//                allConstraints += vertConstraint
+//                NSLayoutConstraint.activate(allConstraints)
+        
+            storyView.create()
     }
 }
 
@@ -203,17 +222,17 @@ extension SimpleIntegrationController: StoryViewDelegateFlowLayout
     
     func insetForSection() -> UIEdgeInsets
     {
-        return UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 8.0)
+        return UIEdgeInsets(top: 0, left: 16.0, bottom: 0, right: 16.0)
     }
     
     func minimumLineSpacingForSection() -> CGFloat
     {
-        return 0
+        return 8.0
     }
     
     func minimumInteritemSpacingForSection() -> CGFloat
     {
-        return 4.0
+        return 16.0
     }
 }
 

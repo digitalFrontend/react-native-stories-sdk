@@ -14,7 +14,10 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/digitalFrontend/react-native-widget-teleopti.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
-
+  s.resources = ["ios/Resources/CustomStoryCell.xib"]
+  s.resource_bundles = {
+  'react-native-stories-sdk' => ['react-native-stories-sdk/ios/Resources/*.xib']
+  }
   s.dependency "React-Core"
   s.ios.vendored_frameworks = [
     'Frameworks/InAppStorySDK.xcframework'
