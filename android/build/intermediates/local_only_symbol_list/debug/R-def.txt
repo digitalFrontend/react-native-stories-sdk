@@ -2,11 +2,15 @@ R_DEF: Internal format may change without notice
 local
 attr showWhenLocked
 color white
-drawable blue_rounded
-drawable ic_close_white
-id frameLayout1
+drawable custom_story_border
+font sans_bold
+font text_bold
+id image
 id stories_list
-layout stories_layout
+id title
+id whiteCover
+layout base_list
+layout custom_story_list_item
 string default_app_name
 string default_caller_appointment
 string default_caller_city

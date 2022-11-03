@@ -1134,7 +1134,6 @@ drawable abc_vector_test
 drawable autofill_inline_suggestion_chip_background
 drawable avd_hide_password
 drawable avd_show_password
-drawable blue_rounded
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1161,6 +1160,7 @@ drawable cs_thumb_up
 drawable cs_thumb_up_disabled
 drawable cs_thumb_up_outline
 drawable cs_thumb_up_outline_disabled
+drawable custom_story_border
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1171,7 +1171,6 @@ drawable ic_bookmark_black_24dp
 drawable ic_bookmark_gray_24dp
 drawable ic_bookmark_outline_black_24dp
 drawable ic_bookmark_outline_gray_24dp
-drawable ic_close_white
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
@@ -1221,6 +1220,8 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable widget_background
 drawable widget_item_background
+font sans_bold
+font text_bold
 id accessibility_action_clickable_span
 id accessibility_actions
 id accessibility_custom_action_0
@@ -1358,7 +1359,6 @@ id forever
 id fps_text
 id fragment_container_view_tag
 id fragments_layout
-id frameLayout1
 id front_progress
 id gameWebview
 id ghost_view
@@ -1547,6 +1547,7 @@ id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
 id webViewContainer
+id whiteCover
 id wrap
 id wrap_content
 integer abc_config_activityDefaultDur
@@ -1608,6 +1609,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout autofill_inline_suggestion
+layout base_list
 layout cs_activity_game
 layout cs_activity_stories
 layout cs_activity_stories_draggable
@@ -1629,6 +1631,7 @@ layout cs_story_list_inner_ugc
 layout cs_story_list_video_inner_item
 layout cs_widget_grid_item
 layout custom_dialog
+layout custom_story_list_item
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1668,7 +1671,6 @@ layout redbox_view
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
-layout stories_layout
 layout support_simple_spinner_dropdown_item
 string abc_action_bar_home_description
 string abc_action_bar_up_description

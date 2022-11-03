@@ -3,6 +3,7 @@
     package="ru.nasvyazi.stories">
   <!-- <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"></uses-permission> -->
   <application>
-
+        <activity android:name="ru.nasvyazi.stories.CustomCellSample"
+            android:exported="true"/>
   </application>
 </manifest>

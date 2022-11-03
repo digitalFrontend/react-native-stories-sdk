@@ -1,21 +1,17 @@
 package ru.nasvyazi.stories;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.storage.StorageManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.fragment.app.Fragment;
 
-
+import ru.nasvyazi.stories.ImageLoader;
+import ru.nasvyazi.stories.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
@@ -23,45 +19,34 @@ import com.inappstory.sdk.stories.ui.views.IStoriesListItem;
 
 import java.io.File;
 
-import ru.nasvyazi.stories.CustomView;
-
-public class MyFragment extends Fragment {
-    CustomView customView;
-    StoriesList view;
+public class CustomCellSample extends AppCompatActivity {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        super.onCreateView(inflater, parent, savedInstanceState);
-//        LayoutInflater inflater1 = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View baseList = inflater.inflate(R.layout.base_list, null);
-        View child = getLayoutInflater().inflate(R.layout.base_list, null);
-        this.view = child.findViewById(R.id.stories_list);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.base_list);
         showStories();
-        return child; // this CustomView could be any view that you want to render
     }
-
 
     private AppearanceManager generateAppearanceManager() {
         AppearanceManager appearanceManager =
                 new AppearanceManager()
-                        .csListItemMargin(0)
-                        .csStoryReaderAnimation(AppearanceManager.ANIMATION_DEPTH)
+                        .csStoryReaderAnimation(1)
                         .csListItemInterface(new IStoriesListItem() {
                             @Override
                             public View getView() {
-                                return LayoutInflater.from(MyFragment.this.getView().getContext())
+                                return LayoutInflater.from(CustomCellSample.this)
                                         .inflate(R.layout.custom_story_list_item, null, false);
                             }
 
                             @Override
                             public View getVideoView() {
-                                return LayoutInflater.from(MyFragment.this.getView().getContext())
+                                return LayoutInflater.from(CustomCellSample.this)
                                         .inflate(R.layout.custom_story_list_item, null, false);
                             }
 
                             @Override
                             public void setId(View view, int i) {
-                                Log.d("HELL i ->>>>>>>>", String.valueOf(i));
 
                             }
 
@@ -90,22 +75,21 @@ public class MyFragment extends Fragment {
 
                             @Override
                             public void setOpened(View itemView, boolean isOpened) {
-                                itemView.findViewById(R.id.whiteCover).setAlpha(isOpened ? (float) 0.5 : 0);
-//                                itemView.findViewById(R.id.border).setVisibility(isOpened ?
-//                                        View.INVISIBLE : View.VISIBLE);
+                                itemView.findViewById(R.id.border).setVisibility(isOpened ?
+                                        View.INVISIBLE : View.VISIBLE);
                             }
                         });
         return appearanceManager;
     }
+
     private void showStories() {
-        StoriesList storiesList = this.view;
+        StoriesList storiesList = findViewById(R.id.stories_list);
         storiesList.setAppearanceManager(generateAppearanceManager());
         try {
             storiesList.loadStories();
         } catch (DataException e) {
             e.printStackTrace();
         }
-
     }
 
     private void showImage(String path, int backgroundColor, ImageView imageView) {
@@ -120,31 +104,5 @@ public class MyFragment extends Fragment {
             imageView.setBackgroundColor(backgroundColor);
         }
     }
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        // do any logic that should happen in an `onCreate` method, e.g:
-        // customView.onCreate(savedInstanceState);
-    }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        // do any logic that should happen in an `onPause` method
-        // e.g.: customView.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // do any logic that should happen in an `onResume` method
-        // e.g.: customView.onResume();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        // do any logic that should happen in an `onDestroy` method
-        // e.g.: customView.onDestroy();
-    }
 }
