@@ -38,7 +38,7 @@ class StoriesModule: NSObject, InAppStoryDelegate {
         
 //            InAppStory.shared.initWith(serviceKey: apiKey)
             InAppStory.shared.initWith(serviceKey: "hDlLPXPDHrjv3Vpd9nlFr8SO3E8DsUBH")
-            InAppStory.shared.settings = Settings(userID: "11112")
+            InAppStory.shared.settings = Settings(userID: "11113")
 //            DispatchQueue.main.async {
 //            guard let rootVC = UIApplication.shared.delegate?.window??.visibleViewController, (rootVC.navigationController != nil) else {
 //                             return
