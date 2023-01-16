@@ -9,12 +9,21 @@ import Foundation
 @objc (NativeCustomViewManager)
 class NativeCustomViewManager: RCTViewManager {
 
-  override static func requiresMainQueueSetup() -> Bool {
-    return true
-  }
+    var controller: SimpleIntegrationController = SimpleIntegrationController()
+    override static func requiresMainQueueSetup() -> Bool {
+        return true
+    }
 
-  override func view() -> UIView! {
-      return SimpleIntegrationController().view
-  }
+    override func view() -> UIView! {
+        return self.controller.view
+    }
 
+    @objc
+    func refreshStoriesList()-> Void{
+        do {
+            DispatchQueue.main.async {
+                self.controller.refresh()
+            }
+        } catch {}
+    }
 }

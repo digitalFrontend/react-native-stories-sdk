@@ -48,14 +48,14 @@ import javax.crypto.spec.SecretKeySpec;
 public class inAppStoriesSdkModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
-  // private final String sharedPreferencesName = "TELEOPTI_storage";
 
+    MyFragment currentFragment;
     AppearanceManager appearanceManager = new AppearanceManager();
-  @SuppressLint("RestrictedApi")
-  public inAppStoriesSdkModule(ReactApplicationContext reactContext) {
+
+    @SuppressLint("RestrictedApi")
+    public inAppStoriesSdkModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
-
   }
 
    @Override
@@ -63,33 +63,21 @@ public class inAppStoriesSdkModule extends ReactContextBaseJavaModule {
      return "StoriesModule";
    }
 
-  class DataObject {
-    public String contractTime;
-    public String description;
-    public double alpha;
-    public double blue;
-    public double green;
-    public double red;
-  }
 
- @ReactMethod
-  public void onCreate(String userId, String apiKey ) throws DataException {
-
-    try {
-      new InAppStoryManager.Builder()
+    @ReactMethod
+    public void onCreate( String apiKey, String userId ) throws DataException {
+        try {
+            new InAppStoryManager.Builder()
               .userId(userId)
               .apiKey(apiKey)
               //.testKey(getTestKey())
               .context(reactContext)
               .create();
 
-        Log.d( "HEL userId", userId );
-        Log.d( "HEL apiKey", apiKey );
-
-    } catch (DataException e) {
-      e.printStackTrace();
-      return;
-    }
+        } catch (DataException e) {
+            e.printStackTrace();
+            return;
+        }
   }
 
     @ReactMethod
@@ -99,20 +87,4 @@ public class inAppStoriesSdkModule extends ReactContextBaseJavaModule {
       InAppStoryManager.getInstance().showStory(storyId, reactContext, appearanceManager);
 
     }
-  // @ReactMethod
-  // public void setDataList(final String dataList, final Promise promise) {
-
-  //   SharedPreferences sharedPreferences =  getReactApplicationContext().getSharedPreferences(sharedPreferencesName,MODE_PRIVATE);
-  //   SharedPreferences.Editor editor = sharedPreferences.edit();
-  //   editor.putString("teleoptiData", dataList);
-  //   editor.commit();
-
-  //   Intent intent = new Intent(reactContext, TeleoptiWidget.class);
-  //   intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-
-  //   int[] ids = AppWidgetManager.getInstance(reactContext)
-  //           .getAppWidgetIds(new ComponentName(reactContext, TeleoptiWidget.class));
-  //   intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
-  //   reactContext.sendBroadcast(intent);
-  // }
 }

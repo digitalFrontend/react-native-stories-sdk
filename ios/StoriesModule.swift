@@ -13,9 +13,7 @@ import InAppStorySDK
 @objc(StoriesModule)
 class StoriesModule: NSObject, InAppStoryDelegate {
     private var window: UIWindow? = nil;
-//    private var mainVC: UIViewController? = nil;
-      
-//      may change too rootVC
+
      override init(){
          super.init()
          DispatchQueue.main.async {
@@ -25,27 +23,16 @@ class StoriesModule: NSObject, InAppStoryDelegate {
 
       }
     
-    
-   
-    
-//    var window: UIWindow?
     @objc
     func onCreate(
-        _ apiKey:String
+        _ apiKey: String,
+        withUserId userId: String
     )-> Void{
         print("func was calling")
         do {
-        
-//            InAppStory.shared.initWith(serviceKey: apiKey)
-            InAppStory.shared.initWith(serviceKey: "hDlLPXPDHrjv3Vpd9nlFr8SO3E8DsUBH")
-            InAppStory.shared.settings = Settings(userID: "11113")
-//            DispatchQueue.main.async {
-//            guard let rootVC = UIApplication.shared.delegate?.window??.visibleViewController, (rootVC.navigationController != nil) else {
-//                             return
-//                        }
-//            }
-            print("connecting")
-//
+            InAppStory.shared.initWith(serviceKey: apiKey)
+            InAppStory.shared.settings = Settings(userID: userId)
+            print("connecting", apiKey, userId)
         } catch {
 
         }
@@ -60,13 +47,9 @@ class StoriesModule: NSObject, InAppStoryDelegate {
         do {
             DispatchQueue.main.async {
                 guard let rootVC = UIApplication.shared.delegate?.window??.visibleViewController, (rootVC.navigationController != nil) else {
-                                            return
-                                       }
-//                var visibleViewController: UIViewController? {
-//                    self.window?.makeKeyAndVisible()
-//                    return UIWindow.getVisibleViewControllerFrom()
-//                }
-            InAppStory.shared.settings = Settings(userID: "111111")
+                            return
+                        }
+
                 self.window?.makeKeyAndVisible()
                 var displaingViewController:UIViewController = UIWindow.getVisibleViewControllerFrom(rootVC)!
                 InAppStory.shared.showSingle(with:stotyId, from: displaingViewController, delegate: self) { show in
@@ -78,7 +61,6 @@ class StoriesModule: NSObject, InAppStoryDelegate {
 
         }
     }
-    
     // methods for Delegate
     func storiesDidUpdated(isContent: Bool, from storyType: StoriesType) {
         print("storiesDidUpdated")

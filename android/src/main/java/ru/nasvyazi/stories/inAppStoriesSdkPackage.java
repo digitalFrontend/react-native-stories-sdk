@@ -13,12 +13,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class inAppStoriesSdkPackage implements ReactPackage {
+//    public MyFragment fragment = new MyFragment();
+    public StoriesCustomViewManager storiesCustomViewManager;
     @NonNull
     @Override
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
+        storiesCustomViewManager  = new StoriesCustomViewManager(reactContext);
         List<NativeModule> modules = new ArrayList<>();
         modules.add(new inAppStoriesSdkModule(reactContext));
-        modules.add(new MyViewManager(reactContext));
+        modules.add(storiesCustomViewManager);
         return modules;
     }
 
@@ -26,7 +29,7 @@ public class inAppStoriesSdkPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
-                new MyViewManager(reactContext)
+                storiesCustomViewManager
         );
     }
 }

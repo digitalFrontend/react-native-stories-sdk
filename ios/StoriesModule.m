@@ -10,7 +10,8 @@
 
 @interface RCT_EXTERN_MODULE(StoriesModule, NSObject)
 
-RCT_EXTERN_METHOD(onCreate: (NSString *) apiKey)
+RCT_EXTERN_METHOD(onCreate: (NSString *) apiKey
+                  withUserId:(NSString *) userId)
 RCT_EXTERN_METHOD(showSingle: (NSString *) stotyId)
 
 @end

@@ -23,10 +23,7 @@ import com.inappstory.sdk.stories.ui.views.IStoriesListItem;
 
 import java.io.File;
 
-import ru.nasvyazi.stories.CustomView;
-
 public class MyFragment extends Fragment {
-    CustomView customView;
     StoriesList view;
 
     @Override
@@ -39,7 +36,6 @@ public class MyFragment extends Fragment {
         showStories();
         return child; // this CustomView could be any view that you want to render
     }
-
 
     private AppearanceManager generateAppearanceManager() {
         AppearanceManager appearanceManager =
@@ -61,7 +57,6 @@ public class MyFragment extends Fragment {
 
                             @Override
                             public void setId(View view, int i) {
-                                Log.d("HELL i ->>>>>>>>", String.valueOf(i));
 
                             }
 
@@ -91,13 +86,12 @@ public class MyFragment extends Fragment {
                             @Override
                             public void setOpened(View itemView, boolean isOpened) {
                                 itemView.findViewById(R.id.whiteCover).setAlpha(isOpened ? (float) 0.5 : 0);
-//                                itemView.findViewById(R.id.border).setVisibility(isOpened ?
-//                                        View.INVISIBLE : View.VISIBLE);
+
                             }
                         });
         return appearanceManager;
     }
-    private void showStories() {
+    public void showStories() {
         StoriesList storiesList = this.view;
         storiesList.setAppearanceManager(generateAppearanceManager());
         try {

@@ -25,27 +25,13 @@ class SimpleIntegrationController: UIViewController, InAppStoryDelegate
 
     }
     
+    func refresh() {
+       storyView.refresh()
+    }
+    
     override func viewDidLoad() {
         print("SimpleIntegrationController 2")
-//        for family: String in UIFont.familyNames
-//               {
-//                   print(family)
-//                   for names: String in UIFont.fontNames(forFamilyName: family)
-//                   {
-//                       print("== \(names)")
-//                   }
-//               }
         super.viewDidLoad()
-
-           // setupInAppStory
-            print("SimpleIntegrationController 3")
-        
-//        InAppStory.shared.cellFont = UIFont(name: "Tele2TextSansSHORT-Bold", size: 10)!
-//        InAppStory.shared.cellBorderRadius = CGFloat(12.0)
-//        InAppStory.shared.showCellTitle = false
-//        InAppStory.shared.coverQuality = .high
-
-            // setup InAppStorySDK for user with ID
         DispatchQueue.main.async {
             guard let rootVC = UIApplication.shared.delegate?.window??.visibleViewController, (rootVC.navigationController != nil) else {
                                          return
@@ -53,103 +39,27 @@ class SimpleIntegrationController: UIViewController, InAppStoryDelegate
             rootVC.addChild(self)
             
         }
-       
-
-           // setupStoryView
-            print("SimpleIntegrationController 4, ")
             // create instance of StoryView
             let screenSize: CGRect = UIScreen.main.bounds
             let rect = CGRect(x: 0, y: -16, width: screenSize.width, height: 134)
         
             storyView = StoryView(frame: rect, favorite: false)
             storyView.translatesAutoresizingMaskIntoConstraints = true
-//            storyView.storyCell.contentView.addShadow(offset: .zero, color: UIColor.black, radius: 5.0, opacity: 1.0) //to add shadow
-        
             // adding a point from where the reader will be shown
             storyView.target =  self
-            storyView.storiesDelegate = self
-        
-        
             // set delegate for layout of StoryView
-      
-   
-            
-//            var allConstraints: [NSLayoutConstraint] = []
-//
-//            NSLayoutConstraint.activate(allConstraints)
-            
-            // running internal StoryView logic
-    
+            storyView.storiesDelegate = self
+
             storyView.storyCell = CustomStoryCell()
             storyView.deleagateFlowLayout = self
         
             self.view.addSubview(storyView)
-        
-//                var allConstraints: [NSLayoutConstraint] = []
-//                let horConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(16)-[storyView]-(16)-|",
-//                                                                   options: [.alignAllLeading, .alignAllTrailing],
-//                                                                   metrics: nil,
-//                                                                   views: ["storyView": storyView!])
-//                allConstraints += horConstraint
-//                let vertConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[storyView(150)]",
-//                                                                    options: [.alignAllTop, .alignAllBottom],
-//                                                                    metrics: nil,
-//                                                                    views: ["storyView": storyView!])
-//                allConstraints += vertConstraint
-//                NSLayoutConstraint.activate(allConstraints)
-        
             storyView.create()
     }
+   
 }
 
-//extension SimpleIntegrationController
-//{
-//
-//     func setupInAppStory()
-//    {
-//        print("SimpleIntegrationController 3")
-//        // setup InAppStorySDK for user with ID
-//        InAppStory.shared.settings = Settings(userID: "11111")
-//        InAppStory.shared.cellFont =
-//    }
-//
-//     func setupStoryView()
-//    {
-//        guard let rootVC = UIApplication.shared.delegate?.window??.visibleViewController, (rootVC.navigationController != nil) else {
-//                return
-//            }
-//        let topController = UIApplication.topViewController()
-//        print("SimpleIntegrationController 4, ")
-//        // create instance of StoryView
-//        let screenSize: CGRect = UIScreen.main.bounds
-//        let rect = CGRect(x: 0, y: 0, width: screenSize.width, height: 100)
-//        storyView = StoryView(frame: rect, favorite: false)
-//
-//        storyView.translatesAutoresizingMaskIntoConstraints = true
-//        // adding a point from where the reader will be shown
-//        storyView.target = topController
-//        // set StoryView delegate
-//        storyView.storiesDelegate = self
-//
-//        self.view.addSubview(storyView)
-//
-//        var allConstraints: [NSLayoutConstraint] = []
-//        let horConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[storyView]-(0)-|",
-//                                                           options: [.alignAllLeading, .alignAllTrailing],
-//                                                           metrics: nil,
-//                                                           views: ["storyView": storyView!])
-//        allConstraints += horConstraint
-//        let vertConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[storyView(150)]",
-//                                                            options: [.alignAllTop, .alignAllBottom],
-//                                                            metrics: nil,
-//                                                            views: ["storyView": storyView!])
-//        allConstraints += vertConstraint
-//        NSLayoutConstraint.activate(allConstraints)
-//
-//        // running internal StoryView logic
-//        storyView.create()
-//    }
-//}
+
 
  extension SimpleIntegrationController
 {
