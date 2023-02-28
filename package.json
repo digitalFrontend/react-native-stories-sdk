@@ -1,23 +1,23 @@
 {
-  "name": "react-native-sories-sdk",
+  "name": "react-native-stories-sdk",
   "version": "1.0.0",
-  "description": "Module for detecting caller id by provided callers list",
+  "description": "Module for join InAppStory native SDK for react-native",
   "main": "index.js",
-  "homepage": "https://github.com/digitalFrontend/react-native-widget-teleopti.git",
+  "homepage": "https://github.com/digitalFrontend/react-native-stories-sdk.git",
   "files": [
     "README.md",
     "android",
     "index.js",
     "ios",
-    "react-native-sories-sdk.podspec"
+    "react-native-stories-sdk.podspec"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/digitalFrontend/react-native-widget-teleopti.git",
-    "baseUrl": "https://github.com/digitalFrontend/react-native-widget-teleopti"
+    "url": "git+https://github.com/digitalFrontend/react-native-stories-sdk.git",
+    "baseUrl": "https://github.com/digitalFrontend/react-native-stories-sdk"
   },
   "keywords": [
     "react-native"
