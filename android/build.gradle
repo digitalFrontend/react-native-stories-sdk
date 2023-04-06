@@ -56,6 +56,6 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$lifeCycle"
     annotationProcessor "android.arch.lifecycle:compiler:$lifeCycle"
 
-    compile 'com.facebook.react:react-native:+'
+    implementation 'com.facebook.react:react-native:+'
 
 }
