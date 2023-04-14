@@ -87,12 +87,12 @@ class SimpleIntegrationController: UIViewController, InAppStoryDelegate
     
     // delegate method, called when a button or SwipeUp event is triggered in the reader
     // types is .button, .game, .deeplink, .swipe
-    func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
+     func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
         print("storyReader")
-        if let url = URL(string: target) {
+        if let url = URL(string: target.trimmingCharacters(in: .whitespaces)) {
             UIApplication.shared.open(url)
         }
-    }
+     }
     
     // delegate method, called when the reader will show
     func storyReaderWillShow(with storyType: StoriesType)
