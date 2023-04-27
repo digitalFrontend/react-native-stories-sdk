@@ -1,6 +1,6 @@
 {
   "name": "react-native-stories-sdk",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Module for join InAppStory native SDK for react-native",
   "main": "index.js",
   "homepage": "https://github.com/digitalFrontend/react-native-stories-sdk.git",
