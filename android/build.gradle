@@ -17,7 +17,7 @@ android {
     defaultConfig {
         minSdkVersion 24
         targetSdkVersion 31
-        versionCode 4
+        versionCode 5
         versionName "1.1"
     }
     lintOptions {
@@ -45,7 +45,7 @@ dependencies {
     implementation "com.android.support:design:$supportLibraryVersion"
     implementation "com.android.support:support-v4:$supportLibraryVersion"
     //stories dependencies  
-    implementation 'com.github.inappstory:android-sdk:1.10.1'
+    implementation 'com.github.inappstory:android-sdk:1.14.1'
 	implementation 'androidx.recyclerview:recyclerview:1.2.1'
 	implementation 'androidx.webkit:webkit:1.4.0'
   
