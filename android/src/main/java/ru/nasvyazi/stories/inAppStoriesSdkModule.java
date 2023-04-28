@@ -66,18 +66,15 @@ public class inAppStoriesSdkModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void onCreate( String apiKey, String userId ) throws DataException {
-        try {
-            new InAppStoryManager.Builder()
-              .userId(userId)
-              .apiKey(apiKey)
-              //.testKey(getTestKey())
-              .context(reactContext)
-              .create();
+  
+      new InAppStoryManager.Builder()
+        .userId(userId)
+        .apiKey(apiKey)
+        //.testKey(getTestKey())
+        .context(reactContext)
+        .create();
 
-        } catch (DataException e) {
-            e.printStackTrace();
-            return;
-        }
+        
   }
 
     @ReactMethod

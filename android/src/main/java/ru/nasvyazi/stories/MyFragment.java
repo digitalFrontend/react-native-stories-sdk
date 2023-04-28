@@ -94,11 +94,9 @@ public class MyFragment extends Fragment {
     public void showStories() {
         StoriesList storiesList = this.view;
         storiesList.setAppearanceManager(generateAppearanceManager());
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+        
+        storiesList.loadStories();
+        
 
     }
 
